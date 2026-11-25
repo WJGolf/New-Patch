@@ -1,0 +1,13 @@
+{
+  "siteName": "RAMFLOW",
+  "siteUrl": "http://localhost:4173/",
+  "githubRepo": "WJGolf/New-Patch",
+  "feedTag": "ramflow-feed",
+  "feedAsset": "releases.json",
+  "publicKeyFile": "keys/update-public-key.pem",
+  "includePrereleases": false,
+  "liveCheckMinutes": 5,
+  "supportUrl": "https://github.com/WJGolf/New-Patch/issues/new",
+  "supportLabel": "แจ้งปัญหาผ่าน GitHub Issues",
+  "themeColor": "#0B0D10"
+}

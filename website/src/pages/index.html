@@ -1,0 +1,140 @@
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="hero-pill"><span class="dot"></span>RAMFLOW สำหรับ Windows 10 / 11</p>
+      <h1>ดูแลหน่วยความจำของ Windows<br><span class="gradient-text">อย่างรู้จริง</span></h1>
+      <p class="lead">RAMFLOW แสดงการใช้ RAM แบบเรียลไทม์ ล้าง Standby List ด้วย Microsoft Sysinternals RAMMap
+        และล้างอัตโนมัติเมื่อหน่วยความจำตึงจริง พร้อมวัดผลก่อนและหลังทุกครั้ง</p>
+      <div data-region="hero">{{region:hero}}</div>
+    </div>
+    <div class="app-shot" aria-hidden="true">
+      {{appWindow}}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" id="features">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Features</p>
+      <h2 class="section-title">ทุกอย่างที่ต้องใช้ ในหน้าต่างเดียว</h2>
+      <p class="lead">ออกแบบให้เข้าใจง่าย แสดงตัวเลขที่วัดได้จริง และไม่สัญญาเกินกว่าที่ Windows ทำได้</p>
+    </div>
+    <div class="features">
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4" /></svg></div>
+        <h3>RAM Monitoring แบบเรียลไทม์</h3>
+        <p>ดู RAM ที่ใช้ พร้อมใช้ แคช Standby และ Modified อัปเดตทุก 1 วินาที พร้อมกราฟ 60 วินาทีล่าสุด</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" /></svg></div>
+        <h3>ล้าง RAM ด้วยคลิกเดียว</h3>
+        <p>เลือกวิธีล้างได้ 4 แบบ (Standby List, Working Sets, System Working Set, Modified Page List) ตามที่ RAMMap ในเครื่องรองรับ</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l3 2" /></svg></div>
+        <h3>Auto Clean อัจฉริยะ</h3>
+        <p>ล้างตามเวลา ตามเปอร์เซ็นต์การใช้ RAM หรือเมื่อ RAM พร้อมใช้ต่ำ พร้อมขีดจำกัดความปลอดภัยในตัว</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-6" /></svg></div>
+        <h3>ประวัติและสถิติ</h3>
+        <p>ทุกการล้างบันทึกค่าที่วัดจริงก่อน/หลัง ดูสถิติวันนี้ สัปดาห์นี้ และส่งออกเป็น CSV ได้</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z" /><path d="m9 12 2 2 4-4" /></svg></div>
+        <h3>ตรวจลายเซ็นก่อนทำงาน</h3>
+        <p>ตรวจลายเซ็นดิจิทัลของ Microsoft บน RAMMap ก่อนใช้งานทุกครั้ง และตรวจลายเซ็นกับ SHA-256 ของทุกอัปเดต</p>
+      </article>
+      <article class="card feature reveal">
+        <div class="ficon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /><rect x="3" y="3" width="18" height="18" rx="4" /></svg></div>
+        <h3>ทำงานเงียบ ๆ ที่ถาดระบบ</h3>
+        <p>ย่อไปที่ System Tray เริ่มพร้อม Windows ได้ สั่งล้างจากเมนูถาดระบบ และรองรับภาษาไทย / อังกฤษ</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{{screenshots}}
+
+<section class="section" id="auto-clean">
+  <div class="container split">
+    <div class="reveal">
+      <p class="eyebrow">Auto Clean</p>
+      <h2 class="section-title">ล้างเมื่อจำเป็นจริง ไม่ใช่ล้างตลอดเวลา</h2>
+      <p class="lead">Auto Clean มี 3 เงื่อนไขให้เลือก และมีระบบป้องกันไม่ให้ล้างถี่เกินไปจนเครื่องทำงานหนัก</p>
+      <ul class="checks">
+        <li><strong>ระยะห่างขั้นต่ำและ Cooldown</strong> — เว้นช่วงระหว่างการล้างทุกแบบ รวมถึงการล้างด้วยตนเอง</li>
+        <li><strong>จำกัดจำนวนครั้งต่อชั่วโมง</strong> — กันการล้างวนซ้ำเมื่อหน่วยความจำไม่ลดลง</li>
+        <li><strong>เงื่อนไขต้องคงอยู่</strong> — ไม่ตอบสนองกับค่าที่พุ่งขึ้นชั่วขณะ</li>
+        <li><strong>ข้ามเมื่อไม่มีอะไรให้ล้าง</strong> — ถ้า Standby List เล็กกว่าค่าขั้นต่ำ ระบบจะข้ามรอบนั้น</li>
+      </ul>
+    </div>
+    <div class="card panel reveal">
+      <div class="mode-list">
+        <div class="mode"><b>A</b><div><h4>ตั้งเวลา</h4><p>ล้างตามช่วงเวลาที่กำหนด</p></div></div>
+        <div class="mode"><b>B</b><div><h4>การใช้งาน RAM</h4><p>ล้างเมื่อการใช้ RAM สูงกว่าค่าที่กำหนดต่อเนื่อง และ RAM พร้อมใช้ต่ำจริง (Pressure Guard)</p></div></div>
+        <div class="mode"><b>C</b><div><h4>RAM ที่พร้อมใช้</h4><p>ล้างเมื่อ RAM พร้อมใช้ต่ำกว่าค่าที่กำหนดต่อเนื่อง</p></div></div>
+      </div>
+      <p class="note">การล้างอัตโนมัติไม่แสดงหน้าต่างขอสิทธิ์ จึงต้องเปิด RAMFLOW แบบผู้ดูแลระบบ (หรือตั้ง “เริ่มพร้อม Windows” ขณะรันแบบผู้ดูแลระบบ)</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="monitoring">
+  <div class="container split reverse">
+    <div class="reveal">
+      <p class="eyebrow">RAM Monitoring</p>
+      <h2 class="section-title">เห็นว่า RAM ถูกใช้ไปกับอะไร</h2>
+      <p class="lead">RAMFLOW ใช้นิยามเดียวกับ Task Manager จึงเทียบตัวเลขกันได้ทันที</p>
+      <ul class="checks">
+        <li><strong>ใช้อยู่ / พร้อมใช้ / ว่าง</strong> — ภาพรวมหน่วยความจำทั้งหมดของเครื่อง</li>
+        <li><strong>แคช = Standby + Modified</strong> — ส่วนที่ Windows คืนให้โปรแกรมได้เมื่อต้องการ</li>
+        <li><strong>ผลการล้างล่าสุด</strong> — ค่าที่วัดจริงก่อนและหลังล้าง ไม่ใช่ตัวเลขประมาณ</li>
+      </ul>
+      <p class="note">การล้าง Standby List ไม่ได้ “เพิ่ม” RAM เพราะ Standby ถูกนับเป็นพร้อมใช้อยู่แล้ว อาจช่วยในบางกรณี เช่น เกมกระตุกขณะที่ Standby ใหญ่มากและหน่วยความจำว่างแทบไม่เหลือ RAMFLOW ไม่รับประกันว่า FPS จะเพิ่มขึ้น</p>
+    </div>
+    <div class="card panel reveal" aria-hidden="true">
+      <div class="wlabel">หน่วยความจำ</div>
+      <div class="wbars">
+        <div><div class="wlabel">ใช้อยู่</div><div class="wbar"><i class="w-62"></i></div></div>
+        <div><div class="wlabel">แคช (Standby + Modified)</div><div class="wbar"><i class="w-28"></i></div></div>
+        <div><div class="wlabel">ว่าง (Free)</div><div class="wbar"><i class="w-10"></i></div></div>
+      </div>
+      <p class="note">ภาพประกอบ — ไม่ใช่ค่าจากเครื่องจริง</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="update-system">
+  <div class="container split">
+    <div class="reveal">
+      <p class="eyebrow">Update System</p>
+      <h2 class="section-title">อัปเดตในตัว ปลอดภัย ย้อนกลับได้</h2>
+      <p class="lead">Update Center ใน RAMFLOW ตรวจเวอร์ชันใหม่จากรายการที่ผู้พัฒนาลงนามไว้ ดาวน์โหลด ตรวจสอบ และติดตั้งให้เอง</p>
+      <ul class="checks">
+        <li><strong>ตรวจลายเซ็นรายการเวอร์ชัน</strong> (ECDSA P-256) และป้องกันรายการเก่าถูกส่งซ้ำ</li>
+        <li><strong>ตรวจ SHA-256</strong> ของไฟล์ทุกครั้งก่อนติดตั้ง</li>
+        <li><strong>สำรองการตั้งค่าและประวัติ</strong> ก่อนอัปเดต และย้อนกลับเวอร์ชันได้เมื่อผู้พัฒนาอนุญาต</li>
+      </ul>
+    </div>
+    <div class="card panel reveal">
+      <ol class="flow">
+        <li>เปิดศูนย์อัปเดต → ตรวจสอบอัปเดต</li>
+        <li>เลือกเวอร์ชันและอ่าน Release Notes</li>
+        <li>ดาวน์โหลด (มีแถบความคืบหน้า) → ตรวจ SHA-256</li>
+        <li>ติดตั้งและรีสตาร์ต → RAMFLOW ปิดและเปิดใหม่ให้เอง</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="card card-glow cta-band reveal">
+      <h2>พร้อมลองใช้ RAMFLOW แล้วหรือยัง</h2>
+      <p class="lead">ดาวน์โหลดเวอร์ชันล่าสุดจาก GitHub Releases อย่างเป็นทางการ</p>
+      <div data-region="cta">{{region:cta}}</div>
+    </div>
+  </div>
+</section>

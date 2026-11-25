@@ -1,0 +1,88 @@
+# RAMFLOW official website → GitHub Pages.
+# Lives in the release repository (installed by Website\deploy\Publish-Website.ps1 as .github/workflows/ramflow-website.yml;
+# the website source is in the "website/" folder of the same repository).
+#
+# Rebuilds when:
+#  - RAMFLOW ADMIN publishes / withdraws / changes the catalog (ADMIN sends repository_dispatch "ramflow-release-updated")
+#  - a release is published or unpublished on GitHub by hand (re-dispatched to main, see job "relay")
+#  - the website source changes on main
+#  - every 6 hours (safety net) or manually (Actions → RAMFLOW Website → Run workflow)
+name: RAMFLOW Website
+
+on:
+  repository_dispatch:
+    types: [ramflow-release-updated]
+  release:
+    types: [published, unpublished, deleted]
+  push:
+    branches: [main]
+    paths: ['website/**', '.github/workflows/ramflow-website.yml']
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ramflow-website
+  cancel-in-progress: false
+
+jobs:
+  # Release events run on the tag, which GitHub Pages does not deploy from; restart the workflow on main instead.
+  # Waits a little so RAMFLOW ADMIN can finish uploading the signed catalog (releases.json) first.
+  relay:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - run: |
+          sleep 45
+          gh workflow run ramflow-website.yml --repo "$GITHUB_REPOSITORY" --ref "${{ github.event.repository.default_branch }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  build:
+    if: github.event_name != 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: website
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Fetch published releases + verify signed catalog
+        working-directory: website
+        env:
+          GITHUB_TOKEN: ${{ github.token }}   # server side only; never written into the site
+        run: node scripts/fetch-releases.mjs
+      - name: Build
+        working-directory: website
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: node scripts/build.mjs
+      - name: Test (rules, built output, live GitHub data)
+        working-directory: website
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node --test tests/*.test.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

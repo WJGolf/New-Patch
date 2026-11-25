@@ -1,0 +1,55 @@
+{
+  "_help": "คำถามที่พบบ่อย: แก้ข้อความหรือเพิ่มรายการได้ที่ไฟล์นี้ แต่ละรายการมี id (ใช้เป็นลิงก์ #id), question และ answer (HTML แบบง่าย: p, ul, ol, li, strong, code, a) แล้วรัน node scripts/build.mjs",
+  "items": [
+    {
+      "id": "what",
+      "question": "RAMFLOW คืออะไร",
+      "answer": "<p>RAMFLOW คือโปรแกรมดูแลหน่วยความจำ (RAM) สำหรับ Windows 10/11 แบบ 64-bit แสดงการใช้ RAM แบบเรียลไทม์ ล้างหน่วยความจำด้วยคลิกเดียว ตั้งให้ล้างอัตโนมัติได้ และบันทึกผลที่วัดได้จริงก่อนและหลังการล้างทุกครั้ง</p><p>ใช้งานได้ทั้งภาษาไทยและภาษาอังกฤษ ทำงานที่ถาดระบบ (System Tray) และอัปเดตตัวเองได้ผ่าน Update Center</p>"
+    },
+    {
+      "id": "how-it-works",
+      "question": "RAMFLOW ทำงานอย่างไร",
+      "answer": "<p>RAMFLOW อ่านข้อมูลหน่วยความจำจาก Windows ทุก 1 วินาที และเมื่อสั่งล้าง จะเรียก <strong>Microsoft Sysinternals RAMMap</strong> ให้ทำงานตามวิธีที่เลือก:</p><ul><li><strong>ล้าง Standby List</strong> (ค่าเริ่มต้น) — ทิ้งแคชไฟล์ที่ไม่ได้ใช้งาน ปลอดภัย แต่บางไฟล์อาจต้องโหลดจากดิสก์ใหม่</li><li><strong>ล้าง Working Sets</strong> — ดึงหน่วยความจำออกจากทุกโปรแกรม อาจทำให้กระตุกชั่วคราว ไม่แนะนำขณะเล่นเกม</li><li><strong>ล้าง System Working Set</strong> — ลดแคชของระบบ ใช้เพื่อทดสอบหรือแก้ปัญหาเท่านั้น</li><li><strong>ล้าง Modified Page List</strong> — เขียนหน้าที่ถูกแก้ไขลงดิสก์แล้วย้ายไปเป็น Standby</li></ul><p>หมายเหตุ: การล้าง Standby List ไม่ได้เพิ่ม RAM เพราะ Standby ถูกนับเป็นหน่วยความจำพร้อมใช้อยู่แล้ว อาจช่วยในบางกรณีเท่านั้น และไม่รับประกันว่า FPS จะเพิ่มขึ้น</p>"
+    },
+    {
+      "id": "download",
+      "question": "ดาวน์โหลด RAMFLOW ได้ที่ไหน",
+      "answer": "<p>ดาวน์โหลดได้จากหน้า <a href=\"{{root}}download/\">ดาวน์โหลด</a> ของเว็บไซต์นี้ ไฟล์ทั้งหมดอยู่บน GitHub Releases อย่างเป็นทางการของ RAMFLOW</p><ul><li><strong>Installer (MSI)</strong> — ติดตั้งลงเครื่อง มีทางลัดใน Start Menu</li><li><strong>Portable (ZIP)</strong> — แตกไฟล์แล้วใช้ได้เลย ไม่ต้องติดตั้ง</li></ul><p>ตรวจความถูกต้องของไฟล์ได้ด้วย PowerShell: <code>Get-FileHash .\\ชื่อไฟล์ -Algorithm SHA256</code> แล้วเทียบกับค่า SHA-256 ที่แสดงข้างปุ่มดาวน์โหลด</p>"
+    },
+    {
+      "id": "install",
+      "question": "วิธีติดตั้ง",
+      "answer": "<p><strong>แบบ Installer (MSI)</strong></p><ol><li>ดาวน์โหลดไฟล์ <code>.msi</code></li><li>ดับเบิลคลิกไฟล์ แล้วอนุญาตสิทธิ์ผู้ดูแลระบบเมื่อ Windows ถาม</li><li>เปิด RAMFLOW จาก Start Menu</li></ol><p><strong>แบบ Portable (ZIP)</strong></p><ol><li>ดาวน์โหลดไฟล์ <code>.zip</code></li><li>คลิกขวา → <strong>Extract All</strong> ไปยังโฟลเดอร์ที่ต้องการ</li><li>เปิด <code>RAMFLOW.exe</code></li></ol><p>ถ้า Windows SmartScreen แสดง “Windows protected your PC” ให้ตรวจว่าไฟล์มาจากเว็บไซต์นี้และ SHA-256 ตรงกัน แล้วกด <strong>More info → Run anyway</strong></p><p>ไม่ต้องติดตั้ง .NET เพิ่ม เพราะรวมมาในแพ็กเกจแล้ว</p>"
+    },
+    {
+      "id": "update",
+      "question": "วิธีอัปเดต",
+      "answer": "<ol><li>เปิด RAMFLOW → เมนู <strong>ศูนย์อัปเดต</strong> → <strong>ตรวจสอบอัปเดต</strong></li><li>เลือกเวอร์ชัน (ป้าย LATEST / RECOMMENDED) และอ่าน Release Notes</li><li>กด <strong>อัปเดตเลย</strong> (หรือ <strong>ดาวน์โหลด</strong>) — ระบบดาวน์โหลดและตรวจ SHA-256 ให้อัตโนมัติ</li><li>กด <strong>ติดตั้งและรีสตาร์ต</strong> — RAMFLOW จะปิด ติดตั้ง และเปิดใหม่เอง</li></ol><p>การตั้งค่าและประวัติอยู่ที่ <code>%AppData%\\RAMFLOW</code> และถูกสำรองก่อนอัปเดตทุกครั้ง หรือจะดาวน์โหลดเวอร์ชันใหม่จากเว็บไซต์แล้วติดตั้งทับก็ได้</p>"
+    },
+    {
+      "id": "auto-clean",
+      "question": "วิธีใช้ Auto Clean",
+      "answer": "<ol><li>เปิด RAMFLOW <strong>แบบผู้ดูแลระบบ</strong> (คลิกขวา → Run as administrator) เพราะการล้างอัตโนมัติจะไม่แสดงหน้าต่างขอสิทธิ์ หรือเปิด “เริ่มพร้อม Windows” ขณะรันแบบผู้ดูแลระบบ</li><li>ไปที่เมนู <strong>ล้างอัตโนมัติ</strong> แล้วกด <strong>เปิดการล้างอัตโนมัติ</strong></li><li>เลือกเงื่อนไข: <strong>A · ตั้งเวลา</strong>, <strong>B · การใช้งาน RAM</strong> หรือ <strong>C · RAM ที่พร้อมใช้</strong></li><li>ปรับขีดจำกัดความปลอดภัย: ระยะห่างขั้นต่ำ, Cooldown, จำนวนครั้งสูงสุดต่อชั่วโมง, เงื่อนไขต้องคงอยู่นาน และขนาด Standby List ขั้นต่ำ</li></ol><p>สถานะปัจจุบัน (เช่น “กำลังตรวจสอบ”, “ช่วงพัก”, “ถึงขีดจำกัดต่อชั่วโมงแล้ว”) แสดงที่ด้านบนของหน้า และทุกการล้างถูกบันทึกในเมนู <strong>ประวัติ</strong></p>"
+    },
+    {
+      "id": "rammap",
+      "question": "RAMMap คืออะไร ทำไมต้องใช้",
+      "answer": "<p><strong>RAMMap</strong> เป็นเครื่องมือของ Microsoft Sysinternals สำหรับวิเคราะห์และจัดการหน่วยความจำของ Windows RAMFLOW ใช้ RAMMap เป็นตัวสั่งล้างหน่วยความจำ</p><ul><li>RAMMap <strong>ไม่ได้รวมอยู่ในแพ็กเกจ RAMFLOW</strong> เพราะเงื่อนไขการใช้งานของ Sysinternals ไม่อนุญาตให้แจกจ่ายต่อ</li><li>ครั้งแรกที่ใช้งาน RAMFLOW จะเสนอให้ดาวน์โหลดจากเซิร์ฟเวอร์ทางการของ Microsoft หลังจากคุณยอมรับเงื่อนไข</li><li>หรือวาง <code>RAMMap.exe</code> ที่ดาวน์โหลดเองไว้ในโฟลเดอร์ <code>Tools\\RAMMap</code> ข้าง <code>RAMFLOW.exe</code></li><li>RAMFLOW ตรวจลายเซ็นดิจิทัลของ Microsoft ทุกครั้งก่อนเรียกใช้ และปฏิเสธไฟล์ที่ตรวจไม่ผ่าน</li></ul><p>หน้าทางการ: <a href=\"https://learn.microsoft.com/sysinternals/downloads/rammap\" target=\"_blank\" rel=\"noopener\">learn.microsoft.com/sysinternals/downloads/rammap</a></p>"
+    },
+    {
+      "id": "wont-open",
+      "question": "โปรแกรมเปิดไม่ได้ ต้องทำอย่างไร",
+      "answer": "<ol><li><strong>ดูที่ถาดระบบ</strong> — RAMFLOW อาจทำงานอยู่แล้วและซ่อนอยู่ที่ถาดระบบ (มุมขวาล่าง กดลูกศร ^) เปิดได้ครั้งละหนึ่งหน้าต่าง การเปิดซ้ำจะเรียกหน้าต่างเดิมขึ้นมา</li><li><strong>ตรวจว่าเป็น Windows 10/11 แบบ 64-bit</strong> — ไม่มีแพ็กเกจสำหรับ 32-bit หรือ ARM</li><li><strong>Portable</strong>: ต้องแตกไฟล์ ZIP ทั้งหมดก่อน อย่าเปิด <code>RAMFLOW.exe</code> จากในไฟล์ ZIP โดยตรง</li><li><strong>SmartScreen / Antivirus</strong> อาจบล็อกไฟล์ ให้ตรวจ SHA-256 กับหน้าดาวน์โหลดก่อนอนุญาต</li><li>ปิด RAMFLOW ทั้งหมดใน Task Manager แล้วเปิดใหม่ หรือติดตั้งเวอร์ชันล่าสุดทับ</li><li>ถ้ายังไม่ได้ ให้แนบไฟล์ log จาก <code>%LocalAppData%\\RAMFLOW\\Logs</code> มาตอนแจ้งปัญหา</li></ol>"
+    },
+    {
+      "id": "update-failed",
+      "question": "อัปเดตไม่ได้ ต้องทำอย่างไร",
+      "answer": "<ul><li><strong>“ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์อัปเดตได้”</strong> — ตรวจอินเทอร์เน็ต / Proxy / Firewall ว่าเข้า github.com ได้</li><li><strong>“บิลด์นี้ยังไม่ได้ตั้งค่าเซิร์ฟเวอร์อัปเดต”</strong> — สำเนาที่ใช้อยู่ไม่ได้มาจากแพ็กเกจอย่างเป็นทางการ ให้ดาวน์โหลดใหม่จากหน้าดาวน์โหลด</li><li><strong>“ไฟล์ที่ดาวน์โหลดไม่ตรงกับ Checksum”</strong> — ไฟล์เสียระหว่างดาวน์โหลด ระบบลบทิ้งแล้ว ให้ลองใหม่</li><li><strong>“สิทธิ์ผู้ดูแลระบบถูกปฏิเสธ”</strong> — กดอนุญาตเมื่อ Windows ถาม (จำเป็นสำหรับรุ่นที่ติดตั้งด้วย MSI)</li><li><strong>“ไม่พบตัวอัปเดต (RAMFLOW.Updater.exe)”</strong> — ติดตั้ง RAMFLOW ใหม่จากหน้าดาวน์โหลด</li></ul><p>ทางเลือกที่ใช้ได้เสมอ: ดาวน์โหลดเวอร์ชันล่าสุดจากเว็บไซต์นี้แล้วติดตั้งทับ — การตั้งค่าและประวัติใน <code>%AppData%\\RAMFLOW</code> จะยังอยู่</p>"
+    },
+    {
+      "id": "safe",
+      "question": "ใช้แล้วปลอดภัยไหม ข้อมูลของฉันถูกส่งไปที่ไหนหรือเปล่า",
+      "answer": "<p>RAMFLOW เก็บการตั้งค่าและประวัติไว้ในเครื่องเท่านั้น (<code>%AppData%\\RAMFLOW</code>) การเชื่อมต่ออินเทอร์เน็ตใช้สำหรับตรวจ/ดาวน์โหลดอัปเดตและดาวน์โหลด RAMMap จาก Microsoft เท่านั้น ทุกอัปเดตต้องผ่านการตรวจลายเซ็นของรายการเวอร์ชันและ SHA-256 ก่อนติดตั้ง</p>"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="th" data-root="{{root}}" data-page="{{page}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta name="robots" content="{{robots}}">
+<meta name="theme-color" content="{{themeColor}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RAMFLOW">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{ogImage}}">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="{{root}}assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="{{root}}assets/img/logo.png">
+<link rel="apple-touch-icon" href="{{root}}assets/img/logo.png">
+<link rel="stylesheet" href="{{root}}assets/css/site.css?v={{assetVersion}}">
+<link rel="preconnect" href="https://api.github.com" crossorigin>
+<script type="module" src="{{root}}assets/js/site.js?v={{assetVersion}}"></script>
+{{head}}
+</head>
+<body>
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="เมนูหลัก">
+    <a class="brand" href="{{root}}"><img src="{{root}}assets/img/logo.png" alt="" width="34" height="34">RAMFLOW</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="เปิดเมนู">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="{{root}}" {{nav:home}}>หน้าแรก</a></li>
+      <li><a href="{{root}}download/" {{nav:download}}>ดาวน์โหลด</a></li>
+      <li><a href="{{root}}versions/" {{nav:versions}}>ประวัติเวอร์ชัน</a></li>
+      <li><a href="{{root}}changelog/" {{nav:changelog}}>Changelog</a></li>
+      <li><a href="{{root}}faq/" {{nav:faq}}>คำถามที่พบบ่อย</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm nav-cta" href="{{root}}download/">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" /></svg>ดาวน์โหลด
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="{{root}}"><img src="{{root}}assets/img/logo.png" alt="" width="34" height="34">RAMFLOW</a>
+      <p>Smart RAM Cleaner &amp; Memory Optimizer สำหรับ Windows 10/11 · ทำงานร่วมกับ Microsoft Sysinternals RAMMap</p>
+    </div>
+    <div>
+      <h3>ผลิตภัณฑ์</h3>
+      <ul>
+        <li><a href="{{root}}download/">ดาวน์โหลด</a></li>
+        <li><a href="{{root}}versions/">ประวัติเวอร์ชัน</a></li>
+        <li><a href="{{root}}changelog/">Changelog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ช่วยเหลือ</h3>
+      <ul>
+        <li><a href="{{root}}faq/#install">วิธีติดตั้ง</a></li>
+        <li><a href="{{root}}faq/#update">วิธีอัปเดต</a></li>
+        <li><a href="{{root}}faq/">คำถามที่พบบ่อย</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ติดต่อ</h3>
+      <ul>
+        <li><a href="{{supportUrl}}" target="_blank" rel="noopener">{{supportLabel}}</a></li>
+        <li><a href="https://github.com/{{repo}}/releases" target="_blank" rel="noopener">GitHub Releases</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {{year}} RAMFLOW</span>
+    <span class="live-status" data-live-status data-state="snapshot"><i></i><span>ข้อมูลเวอร์ชันจาก GitHub Releases · อัปเดต {{generatedAtText}}</span></span>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" data-toast hidden>
+  <button class="toast-close" type="button" aria-label="ปิด" data-toast-close>×</button>
+  <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" /></svg><span data-toast-title>กำลังเริ่มดาวน์โหลด</span></h3>
+  <p data-toast-file></p>
+  <div class="toast-bar"><i></i></div>
+  <p data-toast-help>ดูความคืบหน้าได้ที่แถบดาวน์โหลดของเบราว์เซอร์ (Ctrl+J)</p>
+  <p class="mono" data-toast-hash></p>
+</div>
+
+<script type="application/json" id="release-data">{{data}}</script>
+</body>
+</html>
